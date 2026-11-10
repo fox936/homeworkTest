@@ -2,9 +2,9 @@
  * 学号：2604020331
  * 姓名：李佳琦
  * 题目：Homework3 - 题目1 菜单选择
- * 说明：输出学生成绩管理系统菜单，用 switch 处理 1~4 的选择，
- *       输入 1~4 以外的数字时给出提示，而不是直接结束。
- * 编译：gcc -Wall -std=c11 task1_menu.c -o task1_menu
+ * 说明：先打印学生成绩管理系统菜单，再读入选择，
+ *       用 switch 分派到 1~4 四个功能，非法输入交给 default 处理。
+ * 编译：gcc -Wall -Wextra -std=c11 task1_menu.c -o task1_menu
  */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ int main(void)
     printf("  3. 修改成绩\n");
     printf("  4. 退出系统\n");
     printf("============================\n");
-    printf("请输入你的选择（1~4）：");
+    printf("请输入你的选择：");
 
     if (scanf("%d", &choice) != 1)
     {
@@ -27,7 +27,7 @@ int main(void)
         return 1;
     }
 
-    /* switch 每个分支都要有 break，default 用来兜住非法选择 */
+    /* 每个 case 都要有 break，否则会"穿透"到下一个 case 继续执行 */
     switch (choice)
     {
     case 1:
